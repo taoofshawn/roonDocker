@@ -1,0 +1,13 @@
+version: '3'
+services:
+  roon:
+    build: .
+    image: roon:latest
+    container_name: roon
+    network_mode: "host"
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - /roondata:/data
+      - /roonmusic:/music:ro
+      - /roonbackup:/backups
