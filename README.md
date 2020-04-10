@@ -1,5 +1,5 @@
 # roonDocker
-run a roon core in a docker
+run a roon core in a docker container
 
 Modified and simplified from [this post](https://community.roonlabs.com/t/docker-images-for-roon/13040/67).
 
