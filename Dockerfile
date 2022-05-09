@@ -1,10 +1,10 @@
-FROM debian:9
+FROM debian:stable
 
 ENV ROON_DATAROOT /data
 ENV ROON_ID_DIR /data
 
 ARG ROON_SERVER_PKG=RoonServer_linuxx64.tar.bz2
-ARG ROON_SERVER_URL=http://download.roonlabs.com/builds/${ROON_SERVER_PKG}
+ARG ROON_SERVER_URL=http://download.roonlabs.net/builds/${ROON_SERVER_PKG}
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get -y upgrade && \
