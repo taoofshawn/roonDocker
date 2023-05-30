@@ -16,7 +16,7 @@ I use raspberry pi's for remote output devices (USB connected to DAC/Preamps)
  - The /data and /backups should initially be empty directories so roon can populate them
  - Remove the ":ro" from the end of the music directories if you would like roon to be able to delete music files
 
-```
+```bash
 docker run -d \
     --name=roon \
     -e TZ=America/New_York \
@@ -42,4 +42,13 @@ services:
         - /<path-to-roon-datadir>:/data
         - /<path-to-music>:/music:ro
         - /<path-to-backup-dir>:/backups
+```
+
+## Build
+```bash
+docker build --no-cache --tag taoofshawn/roon:testing .
+docker push taoofshawn/roon:testing
+
+docker tag taoofshawn/roon:testing taoofshawn/roon:latest
+docker push taoofshawn/roon:latest
 ```
