@@ -2,7 +2,7 @@ version: '3'
 services:
   roon:
     build: .
-    image: roon:latest
+    image: taoofshawn/roon
     container_name: roon
     network_mode: "host"
     environment:
