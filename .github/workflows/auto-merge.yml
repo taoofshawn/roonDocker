@@ -28,14 +28,23 @@ jobs:
             echo "only_dockerfile=true" >> $GITHUB_ENV
           fi
 
-      - name: approve and merge (only Dockerfile changed)
+      - name: approve and merge via API
         if: env.only_dockerfile == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo "✅ Only Dockerfile changed — approving and merging"
+          echo "✅ Only Dockerfile changed — approving and merging via API"
+          # Approve
           gh pr review ${{ github.event.pull_request.number }} --approve
-          gh pr merge ${{ github.event.pull_request.number }} --squash
+          # Wait a moment for GitHub to register the approval
+          sleep 3
+          # Merge via the GitHub API directly
+          curl -s -X PUT \
+            -H "Authorization: token ${{ github.token }}" \
+            -H "Accept: application/vnd.github+json" \
+            -d '{"merge_method":"squash"}' \
+            "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/merge"
+          echo ""
 
       - name: reject non-dockerfile changes
         if: env.only_dockerfile != 'true'
