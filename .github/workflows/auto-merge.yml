@@ -42,5 +42,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo "❌ PR touches files beyond Dockerfile — adding block label and closing"
+          echo "❌ PR touches files beyond Dockerfile — requesting changes"
           gh pr review ${{ github.event.pull_request.number }} --request-changes --body "This PR modifies files beyond \`Dockerfile\`. Only Dockerfile-only changes are auto-merged."
