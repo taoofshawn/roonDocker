@@ -1,3 +1,4 @@
+# Auto-merge test v5 - squash
 # Auto-merge test v4
 FROM debian:12-slim
 
