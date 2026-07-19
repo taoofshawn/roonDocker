@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:12-slim
 
 ENV ROON_DATAROOT /data
 ENV ROON_ID_DIR /data
@@ -8,7 +8,8 @@ ARG ROON_SERVER_URL=http://download.roonlabs.net/builds/${ROON_SERVER_PKG}
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get -y upgrade && \
-apt-get -y install bash curl bzip2 ffmpeg cifs-utils
+apt-get -y install bash curl bzip2 ffmpeg cifs-utils && \
+apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 RUN echo "$ROON_SERVER_PKG" && echo "$ROON_SERVER_URL" && \
