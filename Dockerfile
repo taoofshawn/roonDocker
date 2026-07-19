@@ -1,3 +1,4 @@
+# Squash final test
 # Auto-merge final test
 # Auto-merge test v4
 FROM debian:12-slim
