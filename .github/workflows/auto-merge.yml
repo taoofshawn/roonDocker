@@ -28,14 +28,14 @@ jobs:
             echo "only_dockerfile=true" >> $GITHUB_ENV
           fi
 
-      - name: approve and enable auto-merge
+      - name: approve and merge (only Dockerfile changed)
         if: env.only_dockerfile == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo "✅ Only Dockerfile changed — approving and enabling auto-merge"
+          echo "✅ Only Dockerfile changed — approving and merging"
           gh pr review ${{ github.event.pull_request.number }} --approve
-          gh pr merge ${{ github.event.pull_request.number }} --auto --squash
+          gh pr merge ${{ github.event.pull_request.number }} --squash
 
       - name: reject non-dockerfile changes
         if: env.only_dockerfile != 'true'
