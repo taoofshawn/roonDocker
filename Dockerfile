@@ -2,7 +2,7 @@
 # Squash final test
 # Auto-merge final test
 # Auto-merge test v4
-FROM debian:12-slim
+FROM debian:12.15-slim
 
 ENV ROON_DATAROOT /data
 ENV ROON_ID_DIR /data
