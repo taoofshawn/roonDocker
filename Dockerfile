@@ -1,3 +1,4 @@
+# Auto-merge test - remove this comment
 FROM debian:12-slim
 
 ENV ROON_DATAROOT /data
